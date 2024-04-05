@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="description" content="Slovensko">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/thankyou.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>Dakujeme za vyplnenie udajov</title>
-
-
-    <header class="bg-dark fixed-top">
-      
+<header class="bg-dark fixed-top">
+      <!-- navigacny bar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-left">
             <img src="img/vlajkad.jpg" width="30" height="30" class="d-inline-block align-top" alt="Logo">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -35,10 +23,5 @@
                 </ul>
             </div>
         </nav>
-        
+
         </header>
-
-
-<body>
-    <h1 class="container text-center">Ďakujem za odoslanie vašich údajov</h1>
-</body>
