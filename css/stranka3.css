@@ -38,6 +38,7 @@ body{
     margin-right: 150px;
     margin-top: 1px;
 }
+
 body {
     background-image: url(skusme.jpg); 
     background-size: cover;
@@ -92,8 +93,6 @@ footer .text-center p {
 footer a:hover {
     text-decoration: underline; 
   }
-
-
 
 
 

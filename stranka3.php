@@ -38,6 +38,7 @@
         <input type="submit" value="Odoslať">
     </form>
   
+
 <!-- zaciatok vkladania informacii -->
     <form action="action_page.php" method="post">
   <div class="imgcontainer">
@@ -62,6 +63,7 @@
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
+
 
 
     </main>
