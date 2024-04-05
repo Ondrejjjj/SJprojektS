@@ -13,33 +13,7 @@
 
 <body class="bg-info">
 
-    <header class="bg-dark fixed-top">
-      
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-left">
-            <img src="img/vlajkad.jpg" width="30" height="30" class="d-inline-block align-top" alt="Logo">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html" target="_blank">Domov</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="stranka1.html" target="_blank">Informácie</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="stranka2.html" target="_blank">Galeria</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="stranka3.html" target="_blank">Kontakt</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        
-        </header>
+<?php include 'header.php'; ?>
 
     <main class="container text-center mt-5 ">
         <div id="D">
@@ -112,56 +86,7 @@
 
     </main>
 
-    <footer class="bg-primary text-white text-center text-lg-start container">
-        <div class="bg-info p-4">
-          <div class="row">
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Podakovanie</h5>
-      
-              <p>
-                Dobrý deň,
-
-                Chcem vyjadriť úprimné ďakujem za váš záujem a čas, ktorý ste venovali návšteve našej stránky. Je pre mna potešením, že ste si našli čas spoznať viac o Slovensku.
-                
-                Vaša návšteva veľa znamená a teší ma, že som vám mohol poskytnúť užitočné informácie o tejto nádhernej krajine. Verím, že sa vám moj obsah páčil a že vás zaujali rôzne aspekty a krásy Slovenska.
-                
-                Ďakujeme, že ste so mnou.
-              </p>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Odkazy</h5>
-      
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="mailto:someone@example.com">ondrejsmolarik@gmail.com</a>
-                </li>
-                <li>
-                    <a href="tel:09378901">0912 123 456</a>
-              </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase mb-0">Odkazy</h5>
-      
-              <ul class="list-unstyled">
-                <li>
-                  <a class="text-white"><a href="https://slovakia.travel/kam-ist/unikatne-slovensko" target="_blank">unikatne-slovensko</a></a>
-                </li>
-                <li>
-                  <a class="text-white"><a href="https://en.wikipedia.org/wiki/Slovakia" target="_blank">o Slovensku v angličtine</a>
-                </li>
-              </ul>
-            </div>
-   
-          </div>
-
-        </div>
-
-        <div class="text-center p-3">
-          © 2020 Copyright:
-        </div>
-      </footer>
+    <?php include 'footer.php'; ?>
 
 
     
