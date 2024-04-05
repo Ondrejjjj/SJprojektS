@@ -16,33 +16,12 @@
 <?php include 'header.php'; ?>
 
         <h1 class="container">Stranka s informaciami</h1>
-        <!-- zaciatok vkladania informacii -->
-
-<form class="container text-center" action="thankyou.html">
-        <label for="name">Meno:</label><br>
-        <input type="text" id="name" name="name" value=""><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value=""><br>
-        <label for="city">city:</label><br>
-        <input type="city" id="city" name="city" value=""><br>
-        <label for="adress">adress:</label><br>
-        <input type="adress" id="adress" name="adress" value=""><br>
-        <label for="suhlas so spracovaim osobnym uadajov">suhlas so spracovanim udajov</label><br>   
-        <input type="checkbox" id="suhlas" name="suhlas so spracovaim uadajov" value=""><br>
-        <select for="krajina" id="mesto"><br>
-            <option>Slovensko</option>
-            <option>Madarsko</option>
-            <option>Cesko</option>
-            <option>Ukrajina</option>
-        </select><br><br>
-        <input type="submit" value="Odoslať">
-    </form>
-  
+        <!-- zaciatok vkladania informacii -->  
 
 <!-- zaciatok vkladania informacii -->
     <form action="action_page.php" method="post">
   <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    <img src="img/avatar1.png" alt="Avatar" class="avatar" style="width: 200px; height: 200px;">
   </div>
 
   <div class="container">

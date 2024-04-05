@@ -54,33 +54,7 @@ body {
     margin-top: 50px;
 }
 
-#name{
-    border-radius: 8px;
-}
-#email{
-    border-radius: 8px;
-}
-#city{
-    border-radius: 8px;
-}
-#adress{
-    border-radius: 8px;
-}
-#suhlas{
-    border-radius: 8px;
-}
-#mesto{
-    border-radius: 8px;
-}
-#sprava{
-    border-radius: 8px;
-}
-#odoslat{
-    border-radius: 8px;
-    margin: 20px;
-    padding: 10px;
-    border: 15px;
-}
+
 h1{
     text-align: center;
 

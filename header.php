@@ -9,16 +9,16 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html" target="_blank">Domov</a>
+                        <a class="nav-link" href="index.php" target="_blank">Domov</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="stranka1.html" target="_blank">Informácie</a>
+                        <a class="nav-link" href="stranka1.php" target="_blank">Informácie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="stranka2.html" target="_blank">Galeria</a>
+                        <a class="nav-link" href="stranka2.php" target="_blank">Galeria</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="stranka3.html" target="_blank">Kontakt</a>
+                        <a class="nav-link" href="stranka3.php" target="_blank">Kontakt</a>
                     </li>
                 </ul>
             </div>
