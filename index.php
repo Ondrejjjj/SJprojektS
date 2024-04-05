@@ -1,3 +1,14 @@
+<?php
+// Začnite session
+session_start();
+
+// Kontrola, či je používateľ prihlásený
+if (!isset($_SESSION['user_name'])) {
+    header("Location: uvod.php"); // Presmerovanie na prihlasovaciu stránku
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="sk">
 <head>
