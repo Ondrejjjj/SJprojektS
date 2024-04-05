@@ -1,10 +1,10 @@
 <?php
 // Pripojenie k databáze
-$sname= "localhost";
-$unmae= "root";
+$sname = "localhost";
+$username = "root";
 $password = "";
-$db_name = "svkpou"; // Názov vášej databázy
-$conn = mysqli_connect($sname, $unmae, $password, $db_name);
+$db_name = "svkpou"; // Názov vašej databázy
+$conn = mysqli_connect($sname, $username, $password, $db_name);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -20,6 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($conn, $sql)) {
         echo "Records inserted successfully.";
+
+        // Presmerovanie na prihlasovaciu stránku po úspešnej registrácii
+        header("Location: login.php");
+        exit();
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }

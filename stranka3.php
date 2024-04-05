@@ -11,11 +11,12 @@
 
 </head>
 
+
 <body class="bg-info">
 
 <?php include 'header.php'; ?>
 
-        <h1 class="container">Stranka s informaciami</h1>
+        <h1 class="container">Stranka na prihlasenie</h1>
         <!-- zaciatok vkladania informacii -->  
 
 <!-- zaciatok vkladania informacii -->
@@ -37,10 +38,6 @@
     </label>
   </div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
 </form>
 
 
