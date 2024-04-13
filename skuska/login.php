@@ -1,11 +1,11 @@
 <?php
-// Initialize the session
+// Začnite session
 session_start();
- 
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location:index.php");
-    exit;
+
+// Kontrola, či je používateľ prihlásený
+if (isset($_SESSION['user_name'])) {
+    header("Location:/SJSlovensko/SJprojektS/index.php"); // Presmerovanie na hlavnú stránku, ak je používateľ prihlásený
+    exit();
 }
  
 // Include config file

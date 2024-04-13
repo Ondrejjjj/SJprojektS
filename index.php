@@ -2,11 +2,14 @@
 // Začnite session
 session_start();
 
+session_start();
+
 // Kontrola, či je používateľ prihlásený
 if (!isset($_SESSION['user_name'])) {
-    header("Location: skuska/login.php"); // Presmerovanie na prihlasovaciu stránku
+    header("Location: /SJSlovensko/SJprojektS/skuska/login.php"); // Presmerovanie na prihlasovaciu stránku, ak používateľ nie je prihlásený
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
