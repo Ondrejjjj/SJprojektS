@@ -4,7 +4,7 @@ session_start();
 
 // Kontrola, či je používateľ prihlásený
 if (!isset($_SESSION['user_name'])) {
-    header("Location: uvod.php"); // Presmerovanie na prihlasovaciu stránku
+    header("Location: skuska/login.php"); // Presmerovanie na prihlasovaciu stránku
     exit();
 }
 ?>
