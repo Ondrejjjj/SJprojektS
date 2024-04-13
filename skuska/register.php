@@ -16,11 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username_err = "Username can only contain letters, numbers, and underscores.";
     } else{
         // Prepare a select statement
-<<<<<<< HEAD
         $sql = "SELECT id FROM login WHERE username = ?";
-=======
-        $sql = "SELECT id FROM login WHERE meno = ?";
->>>>>>> main
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -71,11 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare an insert statement
-<<<<<<< HEAD
         $sql = "INSERT INTO login (username, password) VALUES (?, ?)";
-=======
-        $sql = "INSERT INTO login (meno, heslo) VALUES (?, ?)";
->>>>>>> main
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -142,7 +134,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
     </div>    
 </body>
-<<<<<<< HEAD
 <script>
 function validatePassword() {
     var password = document.getElementById("password").value;
@@ -155,6 +146,4 @@ function validatePassword() {
 }
 </script>
 
-=======
->>>>>>> main
 </html>
