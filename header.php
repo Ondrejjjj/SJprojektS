@@ -20,6 +20,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="stranka3.php" target="_blank">Kontakt</a>
                     </li>
+                    <?php
+                // Ak je používateľ prihlásený, zobrazíme tlačidlo na odhlásenie
+                if(isset($_SESSION['username'])) {
+                    echo '<li class="nav-item"><a class="nav-link" href="logout.php">Odhlásenie</a></li>';
+                } else {
+                    // Ak používateľ nie je prihlásený, zobrazíme tlačidlo na prihlásenie
+                    echo '<li class="nav-item"><a class="nav-link" href="login.php">Prihlásenie</a></li>';
+                }
+                ?>
                 </ul>
             </div>
         </nav>
