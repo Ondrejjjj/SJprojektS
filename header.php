@@ -20,6 +20,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="stranka3.php" target="_blank">Kontakt</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="kontaktny_formular.php" target="_blank">Kontaktný formulár</a>
+                    </li>
                     <?php
                 // Ak je používateľ prihlásený, zobrazíme tlačidlo na odhlásenie
                 if(isset($_SESSION['username'])) {

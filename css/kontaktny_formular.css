@@ -1,0 +1,35 @@
+
+
+/* Nastavenie štýlu pre kontajner */
+.container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Nastavenie štýlu pre nadpis */
+h1 {
+    color: #007bff;
+}
+
+/* Nastavenie štýlu pre labely */
+label {
+    font-weight: bold;
+}
+
+/* Nastavenie štýlu pre textové polia */
+.form-control {
+    margin-bottom: 20px;
+}
+
+/* Nastavenie štýlu pre tlačidlo */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+/* Nastavenie štýlu pre tlačidlo po najazdení myšou */
+.btn-primary:hover {
+    background-color: #0056b3;
+}
