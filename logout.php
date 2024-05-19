@@ -1,14 +1,7 @@
 <?php
-// Začnite session
-session_start();
+require_once 'session.php';
 
-// Odhlásenie používateľa odstránením všetkých údajov relácie
-$_SESSION = array();
-
-// Zrušenie relácie
-session_destroy();
-
-// Presmerovanie na domovskú stránku
-header("location: index.php");
-exit;
+$session = new Session();
+$session->destroy();
+$session->redirect('index.php');
 ?>

@@ -9,19 +9,22 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php" target="_blank">Domov</a>
+                        <a class="nav-link" href="index.php">Domov</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="stranka1.php" target="_blank">Informácie</a>
+                        <a class="nav-link" href="stranka1.php">Informácie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="stranka2.php" target="_blank">Galeria</a>
+                        <a class="nav-link" href="stranka2.php">Galeria</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="stranka3.php" target="_blank">Kontakt</a>
+                        <a class="nav-link" href="stranka3.php">Kontakt</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="kontaktny_formular.php" target="_blank">Kontaktný formulár</a>
+                    <a class="nav-link" href="kontaktny_formular.php">Kontaktný formulár</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="skuska/info.php">Turisticke info</a>
                     </li>
                     <?php
                 // Ak je používateľ prihlásený, zobrazíme tlačidlo na odhlásenie

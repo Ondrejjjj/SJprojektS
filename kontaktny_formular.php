@@ -15,7 +15,7 @@
     <main class="container text-center mt-5">
         <div class="container">
             <h1>Kontaktujte nás</h1>
-            <form action="send_email.php" method="post">
+            <form action="create_contact.php" method="post">
                 <div class="form-group">
                     <label for="name">Meno:</label>
                     <input type="text" class="form-control" id="name" name="name" required>
@@ -30,10 +30,15 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Odoslať</button>
             </form>
+
+            <!-- CRUD tlačidlá -->
+            <div class="mt-4">
+                <a href="create_contact.php" class="btn btn-success">Pridať novú správu</a>
+                <a href="read_contacts.php" class="btn btn-info">Zobraziť všetky správy</a>
+            </div>
         </div>
     </main>
 
-    <!-- zaciatok footer -->
     <?php include 'footer.php'; ?>
 
 <script src="js/contact.js"></script>
