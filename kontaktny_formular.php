@@ -32,10 +32,7 @@
             </form>
 
             <!-- CRUD tlačidlá -->
-            <div class="mt-4">
-                <a href="create_contact.php" class="btn btn-success">Pridať novú správu</a>
-                <a href="read_contacts.php" class="btn btn-info">Zobraziť všetky správy</a>
-            </div>
+            
         </div>
     </main>
 
