@@ -2,21 +2,30 @@
 
 require_once 'tourist_info.php'; // Importujeme triedu TouristInfo
 
-// Kontrola, či sú údaje z formulára zaslané pomocou POST metódy
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $location = $_POST["location"];
-    $type = $_POST["type"];
-    $info = $_POST["info"];
+class InsertHandler {
+    private $touristInfo;
 
-    // Vytvoríme objekt triedy TouristInfo
-    $touristInfo = new TouristInfo();
+    public function __construct() {
+        $this->touristInfo = new TouristInfo();
+    }
 
-    // Voláme metódu pre vloženie údajov do databázy
-    $touristInfo->createTouristInfo($location, $type, $info);
+    public function handlePostRequest() {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $location = $_POST["location"];
+            $type = $_POST["type"];
+            $info = $_POST["info"];
 
-    // Presmerujeme používateľa na inú stránku alebo vypíšeme potvrdenie
-    header("Location: success.php");
-    exit();
+            $this->touristInfo->createTouristInfo($location, $type, $info);
+
+            // Presmerujeme používateľa na inú stránku alebo vypíšeme potvrdenie
+            header("Location: success.php");
+            exit();
+        }
+    }
 }
+
+// Vytvoríme objekt pre spracovanie vkladania údajov
+$insertHandler = new InsertHandler();
+$insertHandler->handlePostRequest();
 
 ?>

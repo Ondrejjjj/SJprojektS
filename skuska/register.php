@@ -1,55 +1,88 @@
-
 <?php
 require_once 'Database.php';
 require_once 'User.php';
 
-$database = new Database();
-$db = $database->connect();
-$user = new User($db);
+class Register {
+    private $user;
+    private $password;
+    private $confirm_password;
+    private $errors = ["username" => "", "password" => "", "confirm_password" => ""];
 
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+    public function __construct($user) {
+        $this->user = $user;
+    }
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+    public function handleRequest() {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $this->validateInput();
+            if (empty($this->errors["username"]) && empty($this->errors["password"]) && empty($this->errors["confirm_password"])) {
+                $this->register();
+            }
+        }
+        $this->displayForm();
+    }
 
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
-    } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-        $username_err = "Username can only contain letters, numbers, and underscores.";
-    } else {
-        $user->username = trim($_POST["username"]);
-        if($user->usernameExists()){
-            $username_err = "This username is already taken.";
+    private function validateInput() {
+        if (empty(trim($_POST["username"]))) {
+            $this->errors["username"] = "Please enter a username.";
+        } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))) {
+            $this->errors["username"] = "Username can only contain letters, numbers, and underscores.";
+        } else {
+            $this->user->username = trim($_POST["username"]);
+            if ($this->user->usernameExists()) {
+                $this->errors["username"] = "This username is already taken.";
+            }
+        }
+
+        if (empty(trim($_POST["password"]))) {
+            $this->errors["password"] = "Please enter a password.";
+        } elseif (strlen(trim($_POST["password"])) < 6) {
+            $this->errors["password"] = "Password must have at least 6 characters.";
+        } else {
+            $this->password = trim($_POST["password"]);
+        }
+
+        if (empty(trim($_POST["confirm_password"]))) {
+            $this->errors["confirm_password"] = "Please confirm password.";
+        } else {
+            $this->confirm_password = trim($_POST["confirm_password"]);
+            if (empty($this->errors["password"]) && ($this->password != $this->confirm_password)) {
+                $this->errors["confirm_password"] = "Password did not match.";
+            }
         }
     }
 
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have at least 6 characters.";
-    } else {
-        $password = trim($_POST["password"]);
-    }
-
-    if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";     
-    } else {
-        $confirm_password = trim($_POST["confirm_password"]);
-        if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
-        }
-    }
-
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
-        $user->password = password_hash($password, PASSWORD_DEFAULT);
-        if($user->create()){
+    private function register() {
+        $this->user->password = password_hash($this->password, PASSWORD_DEFAULT);
+        if ($this->user->create()) {
             header("location: login.php");
+            exit();
         } else {
             echo "Oops! Something went wrong. Please try again later.";
         }
     }
+
+    private function displayForm() {
+        // Ensure these variables are initialized
+        $username = $this->user->username ?? "";
+        $password = $this->password ?? "";
+        $confirm_password = $this->confirm_password ?? "";
+        
+        $username_err = $this->errors["username"];
+        $password_err = $this->errors["password"];
+        $confirm_password_err = $this->errors["confirm_password"];
+
+    }
 }
+
+$database = new Database();
+$db = $database->connect();
+$user = new User($db);
+$register = new Register($user);
+$register->handleRequest();
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,8 +91,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
+        body { font: 14px sans-serif; }
+        .wrapper { width: 360px; padding: 20px; }
     </style>
 </head>
 <body>
@@ -69,17 +102,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="">
                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>    
+            </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
                 <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="">
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
@@ -88,6 +121,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
-    </div>    
+    </div>
 </body>
 </html>

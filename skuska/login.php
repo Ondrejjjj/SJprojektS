@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -10,44 +9,70 @@ if (isset($_SESSION['username'])) {
 require_once 'Database.php';
 require_once 'User.php';
 
+class Login {
+    private $user;
+    private $password;
+    private $errors = ["username" => "", "password" => "", "login" => ""];
+
+    public function __construct($user) {
+        $this->user = $user;
+    }
+
+    public function handleRequest() {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $this->validateInput();
+            if (empty($this->errors["username"]) && empty($this->errors["password"])) {
+                $this->login();
+            }
+        }
+        $this->displayForm();
+    }
+
+    private function validateInput() {
+        if (empty(trim($_POST["username"]))) {
+            $this->errors["username"] = "Please enter username.";
+        } else {
+            $this->user->username = trim($_POST["username"]);
+        }
+
+        if (empty(trim($_POST["password"]))) {
+            $this->errors["password"] = "Please enter your password.";
+        } else {
+            $this->password = trim($_POST["password"]);
+        }
+    }
+
+    private function login() {
+        if ($this->user->usernameExists()) {
+            if (password_verify($this->password, $this->user->password)) {
+                $_SESSION["loggedin"] = true;
+                $_SESSION["id"] = $this->user->id;
+                $_SESSION["username"] = $this->user->username;
+                header("Location:/SJSlovensko/SJprojektS/index.php");
+                exit();
+            } else {
+                $this->errors["login"] = "Invalid username or password.";
+            }
+        } else {
+            $this->errors["login"] = "Invalid username or password.";
+        }
+    }
+
+    private function displayForm() {
+        $username = $this->user->username ?? "";
+        $username_err = $this->errors["username"];
+        $password_err = $this->errors["password"];
+        $login_err = $this->errors["login"];
+    }
+}
+
 $database = new Database();
 $db = $database->connect();
 $user = new User($db);
-
-$username = $password = "";
-$username_err = $password_err = $login_err = "";
-
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $user->username = trim($_POST["username"]);
-    }
-
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-
-    if(empty($username_err) && empty($password_err)){
-        if($user->usernameExists()) {
-            if(password_verify($password, $user->password)){
-                session_start();
-                $_SESSION["loggedin"] = true;
-                $_SESSION["id"] = $user->id;
-                $_SESSION["username"] = $user->username;                            
-                header("Location:/SJSlovensko/SJprojektS/index.php");
-            } else {
-                $login_err = "Invalid username or password.";
-            }
-        } else {
-            $login_err = "Invalid username or password.";
-        }
-    }
-}
+$login = new Login($user);
+$login->handleRequest();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="">
                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>    
             <div class="form-group">
