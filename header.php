@@ -17,9 +17,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="stranka2.php">Galeria</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="stranka3.php">Kontakt</a>
-                    </li>
+
                     <li class="nav-item">
                     <a class="nav-link" href="kontaktny_formular.php">Kontaktný formulár</a>
                     </li>

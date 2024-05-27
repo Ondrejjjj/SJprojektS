@@ -28,5 +28,7 @@
 <!-- Tlačidlo pre mazanie informácií -->
 <a href="delete.php"><button>Zmazať informácie</button></a>
 
+<a href="/SJSlovensko/SJprojektS/index.php"><button>Prejst spat na stranku</button></a>
+
 </body>
 </html>
