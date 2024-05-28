@@ -63,11 +63,10 @@ class Register {
     }
 
     private function displayForm() {
-        // Ensure these variables are initialized
-        $username = $this->user->username ?? "";
-        $password = $this->password ?? "";
-        $confirm_password = $this->confirm_password ?? "";
-        
+        $username = $_POST["username"] ?? "";
+        $password = $_POST["password"] ?? "";
+        $confirm_password = $_POST["confirm_password"] ?? "";
+
         $username_err = $this->errors["username"];
         $password_err = $this->errors["password"];
         $confirm_password_err = $this->errors["confirm_password"];
@@ -75,14 +74,13 @@ class Register {
     }
 }
 
+// Instantiate necessary objects and handle the request
 $database = new Database();
 $db = $database->connect();
 $user = new User($db);
 $register = new Register($user);
 $register->handleRequest();
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,13 +92,24 @@ $register->handleRequest();
         body { font: 14px sans-serif; }
         .wrapper { width: 360px; padding: 20px; }
     </style>
+    <script>
+        function validateForm() {
+            var password = document.getElementsByName("password")[0].value;
+            var confirm_password = document.getElementsByName("confirm_password")[0].value;
+            if (password !== confirm_password) {
+                alert("Password did not match.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
     <div class="wrapper">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
+        <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="">
                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
