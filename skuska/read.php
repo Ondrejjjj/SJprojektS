@@ -10,12 +10,47 @@ class TouristInfoReader extends TouristInfo {
         echo '<html>';
         echo '<head>';
         echo '<title>Čítať turistické informácie</title>';
+        echo '<style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 20px;
+                    text-align: center;
+                }
+
+                h2 {
+                    color: #4CAF50;
+                }
+
+                table {
+                    width: 80%;
+                    margin: 0 auto;
+                    border-collapse: collapse;
+                }
+
+                th, td {
+                    padding: 8px;
+                    border: 1px solid #ddd;
+                }
+
+                th {
+                    background-color: #f2f2f2;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #007bff;
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                }
+              </style>';
         echo '</head>';
         echo '<body>';
 
         echo '<h2>Turistické informácie:</h2>';
 
-        echo '<table border="1">';
+        echo '<table>';
         echo '<tr>';
         echo '<th>ID</th>';
         echo '<th>Lokalita</th>';
